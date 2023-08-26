@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bionic_Reading</title>
+    <style>
+        .background{
+            background-color: rgb(240, 240, 240);
+        }
+         .normal{ 
+            color: black;
+            text-align: center;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace
+         }
+         .heading{ 
+            color: black;
+            text-align: center;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .image{
+            width: 150px;
+            height:auto;
+            margin-right: 5px;
+        }
+        .colored-box{
+            display: inline-block;
+            background-color: rgb(234, 33, 33);
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body class = "background">
+    <div class = "heading">
+        <h1>Convert your text into <span class="colored-box">Bionic Text</span></h1>
+        <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8FH3Sx2VwQs6JoKlPDbxWRZcSSnZqmV25MQ&usqp=CAU">
+        <form onsubmit="return Bionic_Text()">
+        </div>
+        
+        <div class="normal">
+            <label for="Text">Enter your text here</label>
+            <input type="text" id="Text" name="text" placholder="Enter...">
+            <input type="submit" value="Sumbit">
+        </div>
+    </form>
+    <div class="output">
+        <p  id = "output"> </p>
+    </div>
+    <script>
+        function Bionic_Text() 
+        {
+            var para = document.getElementById("Text").value;
+            var words = para.split(/\s+/);
+            for (let i = 0; i < words.length; i++) 
+            {
+                var letters = words[i].split("");
+                if (letters.length >= 2) 
+                {
+                    letters[0] = "<strong>" + letters[0] + "</strong>";
+                    letters[1] = "<strong>" + letters[1] + "</strong>";
+                    words[i] = letters.join("");
+                }
+            }
+            var paragraph = "<p>" + words.join(" ") + "</p>";
+            var result = document.getElementById("output");
+            result.innerHTML = paragraph;
+            return false;
+        }  
+    </script>
+</body>
+</html>
